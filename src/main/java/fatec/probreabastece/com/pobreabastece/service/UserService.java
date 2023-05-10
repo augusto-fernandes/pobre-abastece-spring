@@ -1,6 +1,7 @@
 package fatec.probreabastece.com.pobreabastece.service;
 
 import fatec.probreabastece.com.pobreabastece.model.User;
+import fatec.probreabastece.com.pobreabastece.model.dto.UserResponseDTO;
 import fatec.probreabastece.com.pobreabastece.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,10 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
-    public List<User> findAll() {
-        return repository.findAll();
+    public List<UserResponseDTO> findAll() {
+        List<User> result = repository.findAll();
+        List<UserResponseDTO> dto = result.stream().map(UserResponseDTO::new).toList();
+        return dto;
     }
 
     public User findById(Long id) {

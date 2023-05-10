@@ -7,6 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "CARRO")
 public class Carro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

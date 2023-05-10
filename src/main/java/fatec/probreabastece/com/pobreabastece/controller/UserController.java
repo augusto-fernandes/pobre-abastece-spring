@@ -1,15 +1,17 @@
 package fatec.probreabastece.com.pobreabastece.controller;
 
+import fatec.probreabastece.com.pobreabastece.configuration.ModelMapperConfig;
 import fatec.probreabastece.com.pobreabastece.model.User;
+import fatec.probreabastece.com.pobreabastece.model.dto.UserRequestDTO;
+import fatec.probreabastece.com.pobreabastece.model.dto.UserResponseDTO;
 import fatec.probreabastece.com.pobreabastece.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -17,17 +19,18 @@ public class UserController {
 
     @Autowired
     UserService service;
+    @Autowired
+    ModelMapper mapper;
 
     @GetMapping
-    ResponseEntity<List<User>> findAll(){
-        List<User> users = service.findAll();
-        return ResponseEntity.ok(users);
+    ResponseEntity<List<UserResponseDTO >> findAll(){
+        List<UserResponseDTO> result = service.findAll();
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id ){
-        User user = service.findById(id);
-     return ResponseEntity.ok(user);
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id ){
+        return ResponseEntity.ok().body((mapper.map(service.findById(id),UserResponseDTO.class)));
     }
 
     @PostMapping
