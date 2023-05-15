@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserRequestDTO {
+    private Long id;
     private String nome;
     private String localizacao;
     private String phone;
