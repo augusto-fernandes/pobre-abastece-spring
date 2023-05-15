@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Objects;
+
+import org.hibernate.mapping.Set;
 @Setter
 @Getter
 @Entity
@@ -24,6 +27,12 @@ public class Posto {
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
     private Endereco id_endereco;
+
+    @ManyToMany(mappedBy = "id_posto")
+    public List<HistoricoPreco> historico;
+
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_posto")
+    private java.util.Set<Avaliacao> avaliacao;
 
     @Override
     public boolean equals(Object o) {
