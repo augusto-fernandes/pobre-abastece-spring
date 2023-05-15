@@ -1,12 +1,17 @@
 package fatec.probreabastece.com.pobreabastece.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
-
+@Setter
 @Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "POSTO")
 public class Posto {
 
@@ -17,8 +22,8 @@ public class Posto {
     private String cnpj;
 
     @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco", referencedColumnName = "id")
-    private Endereco endereco;
+    @JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
+    private Endereco id_endereco;
 
     @Override
     public boolean equals(Object o) {

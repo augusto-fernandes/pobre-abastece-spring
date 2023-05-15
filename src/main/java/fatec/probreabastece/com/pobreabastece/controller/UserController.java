@@ -1,8 +1,5 @@
 package fatec.probreabastece.com.pobreabastece.controller;
-
-import fatec.probreabastece.com.pobreabastece.configuration.ModelMapperConfig;
 import fatec.probreabastece.com.pobreabastece.model.User;
-import fatec.probreabastece.com.pobreabastece.model.dto.UserRequestDTO;
 import fatec.probreabastece.com.pobreabastece.model.dto.UserResponseDTO;
 import fatec.probreabastece.com.pobreabastece.service.UserService;
 import org.modelmapper.ModelMapper;

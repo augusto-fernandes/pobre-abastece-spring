@@ -19,13 +19,13 @@ import lombok.Setter;
 @Getter 
 @Setter
 @Entity
-@Table(name="ENDERECO")
+@Table(name="endereco")
 public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private Integer id;
+    @Column(name="id_endereco")
+    private Integer id_endereco;
     private Integer cep;
     private String logradouro;
     private String numero;
@@ -33,7 +33,7 @@ public class Endereco {
     private String cidade;
     private String complemento;
 
-    @OneToOne (mappedBy = "endereco")
+    @OneToOne (mappedBy = "id_endereco")
     private Posto posto;
 
 }
