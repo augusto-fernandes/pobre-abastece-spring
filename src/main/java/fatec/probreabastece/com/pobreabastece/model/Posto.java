@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 import java.util.Objects;
 
-import org.hibernate.mapping.Set;
+
 @Setter
 @Getter
 @Entity
@@ -29,7 +29,7 @@ public class Posto {
     private Endereco id_endereco;
 
     @ManyToMany(mappedBy = "id_posto")
-    public List<HistoricoPreco> historico;
+    public Set<HistoricoPreco> historico;
 
     @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_posto")
     private java.util.Set<Avaliacao> avaliacao;

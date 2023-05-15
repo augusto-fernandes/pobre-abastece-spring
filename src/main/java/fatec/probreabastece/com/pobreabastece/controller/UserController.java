@@ -1,5 +1,6 @@
 package fatec.probreabastece.com.pobreabastece.controller;
 import fatec.probreabastece.com.pobreabastece.model.User;
+import fatec.probreabastece.com.pobreabastece.model.dto.UserRequestDTO;
 import fatec.probreabastece.com.pobreabastece.model.dto.UserResponseDTO;
 import fatec.probreabastece.com.pobreabastece.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -37,20 +38,9 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<User> updateUser( @PathVariable(name = "id") Long id, @RequestBody User user ){
-        User userActual = service.findById(id);
-        if(userActual != null && userActual.toString().length() > 0){
-            userActual.setNome(user.getNome());
-            userActual.setLocalizacao(user.getLocalizacao());
-            userActual.setEmail(user.getEmail());
-            userActual.setPhone(user.getPhone());
-            userActual.setPassword(user.getPassword());
-
-            User save = service.save(userActual);
-            return ResponseEntity.ok(save);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<UserRequestDTO> updateUser( @PathVariable(name = "id") Long id, @RequestBody UserRequestDTO user ){
+        user.setId(id);
+        return ResponseEntity.ok().body(mapper.map(service.update(user), UserRequestDTO.class));
     }
 
     @DeleteMapping(value = "/{id}")
