@@ -18,6 +18,12 @@ public class EnderecoController {
 
     @Autowired
     public EnderecoRepository repository;
+
+
+    @Autowired
+    public ViaCepController viacep;
+
+
     public List<Endereco> listarTodosEndereco(){
         return repository.findAll();
     }

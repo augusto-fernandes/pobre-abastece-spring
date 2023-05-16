@@ -1,9 +1,9 @@
 package fatec.probreabastece.com.pobreabastece.model;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Set;
 
-import org.hibernate.mapping.List;
 
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +36,7 @@ public class HistoricoPreco {
      @JoinColumn(name = "id_combustivel")
      , inverseJoinColumns = 
      @JoinColumn(name = "id_combustivel1"))
-    public java.util.List<Combustivel> id_combustivel;
+    private List<Combustivel> id_combustivel;
 
     @ManyToMany
     @JoinTable(name = "POSTO_JOIN", 
@@ -44,7 +44,7 @@ public class HistoricoPreco {
     @JoinColumn(name = "id_posto"), 
     inverseJoinColumns = 
     @JoinColumn(name = "id_posto1"))
-    public java.util.List<Posto> id_posto;
+    private List<Posto> id_posto;
 
     @ManyToMany
     @JoinTable(name = "CONTA_JOIN", 
@@ -52,6 +52,6 @@ public class HistoricoPreco {
     @JoinColumn(name = "id_conta"),
     inverseJoinColumns = 
     @JoinColumn(name = "id_conta1"))
-    public java.util.List<Conta> id_conta;
+    List<Conta> id_conta;
 
 }
