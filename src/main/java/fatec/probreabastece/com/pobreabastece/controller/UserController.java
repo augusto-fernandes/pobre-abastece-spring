@@ -1,5 +1,4 @@
 package fatec.probreabastece.com.pobreabastece.controller;
-
 import fatec.probreabastece.com.pobreabastece.model.User;
 import fatec.probreabastece.com.pobreabastece.model.dto.UserRequestDTO;
 import fatec.probreabastece.com.pobreabastece.model.dto.UserResponseDTO;
