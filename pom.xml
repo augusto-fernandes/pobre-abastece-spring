@@ -55,12 +55,10 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.1.1</version>
 		</dependency>
-<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-<dependency>
-    <groupId>org.springframework.data</groupId>
-    <artifactId>spring-data-jpa</artifactId>
-    <version>3.1.0</version>
-</dependency>
+		<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -68,12 +66,20 @@
 			<version>4.0.1</version>
 		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-web</artifactId>
-    <version>6.0.6</version>
-</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>6.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>4.4.0</version>
+		</dependency>
 
 
 	</dependencies>
