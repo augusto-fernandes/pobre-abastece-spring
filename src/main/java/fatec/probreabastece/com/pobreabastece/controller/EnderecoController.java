@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value= "/endereco")
+@RequestMapping(value= "/endereco1")
 public class EnderecoController {
     
 

@@ -23,9 +23,14 @@ public class Posto {
     private Integer id_posto;
     private String nome;
     private String cnpj;
+    private String bandeira;
+    private String horario_atendimento;
+    private String servicos;
+    private String pagamento;
 
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
+
     private Endereco id_endereco;
 
     @ManyToMany(mappedBy = "id_posto")

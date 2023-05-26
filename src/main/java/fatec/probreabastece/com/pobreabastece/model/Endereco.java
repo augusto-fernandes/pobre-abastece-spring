@@ -27,11 +27,11 @@ public class Endereco {
     @Column(name="id_endereco")
     private Integer id_endereco;
     private Integer cep;
+    private String cidade;
     private String logradouro;
     private String numero;
-    private String bairro; 
-    private String cidade;
     private String complemento;
+    private String bairro;
 
     @OneToOne (mappedBy = "id_endereco")
     private Posto posto;

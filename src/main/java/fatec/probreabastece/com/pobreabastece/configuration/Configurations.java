@@ -27,8 +27,15 @@ public class Configurations {
                 .requestMatchers(HttpMethod.DELETE, "/users").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/endereco").permitAll()
+                .requestMatchers(HttpMethod.GET, "/postos").permitAll()
                 .requestMatchers(HttpMethod.GET, "/consulta").permitAll()
+                .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
+                .requestMatchers(HttpMethod.POST, "/postos").permitAll()
+                .requestMatchers(HttpMethod.GET, "/postos/todos").permitAll()
+                .requestMatchers(HttpMethod.GET, "/todos").permitAll()
+                .requestMatchers(HttpMethod.POST, "/postos/todos").permitAll()
+                .requestMatchers(HttpMethod.GET, "/postos/{}").permitAll()
+
                 .anyRequest().authenticated().and().build();
 
 
