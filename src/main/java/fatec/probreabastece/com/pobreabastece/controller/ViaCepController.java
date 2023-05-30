@@ -1,5 +1,7 @@
 package fatec.probreabastece.com.pobreabastece.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+import fatec.probreabastece.com.pobreabastece.model.dto.EnderecoResponseVIACEP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,10 @@ public class ViaCepController {
 
     private final EnderecoServiceCEP enderecoService;
 
-    @GetMapping("/consulta")
+    @GetMapping
     public ResponseEntity consultaCep(@RequestBody EnderecoRequestVIACEP enderecoRequest) {
+
+
         return ResponseEntity.ok(enderecoService.executa(enderecoRequest));
     }
     

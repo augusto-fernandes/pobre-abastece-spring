@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value= "/endereco")
+@RequestMapping(value= "/endereco1")
 public class EnderecoController {
     
 
@@ -37,7 +37,7 @@ public class EnderecoController {
     @PutMapping(value = "/altera")
     public void alterarEndereco(Endereco endereco)
     {
-        if(endereco.getId_endereco()>0)
+
         repository.save(endereco);
     }
     @DeleteMapping

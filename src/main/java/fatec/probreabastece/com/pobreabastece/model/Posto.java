@@ -1,11 +1,14 @@
 package fatec.probreabastece.com.pobreabastece.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 
@@ -20,19 +23,24 @@ public class Posto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_posto;
+    private Integer idPosto;
     private String nome;
     private String cnpj;
+    private String bandeira;
+    private String horario_atendimento;
+    private String servicos;
+    private String pagamento;
+
 
     @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
-    private Endereco id_endereco;
+    @JoinColumn(name = "idEndereco", referencedColumnName = "idEndereco")
+    private Endereco idEndereco;
 
-    @ManyToMany(mappedBy = "id_posto")
-    public Set<HistoricoPreco> historico;
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idPosto")
+    public List<HistoricoPreco> historico;
 
-    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_posto")
-    private java.util.Set<Avaliacao> avaliacao;
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idPosto")
+    private List<Avaliacao> avaliacao;
 
     @Override
     public boolean equals(Object o) {
