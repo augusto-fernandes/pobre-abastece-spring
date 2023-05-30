@@ -25,10 +25,10 @@ import lombok.Setter;
 public class Combustivel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_combustivel;
-    private String descricao_combustivel;
+    private Long idCombustivel;
+    private String tipoCombustivel;
 
-    @ManyToMany(mappedBy = "id_combustivel")
+    @ManyToMany(mappedBy = "idCombustivel")
     public List<HistoricoPreco> historico;
 
 }

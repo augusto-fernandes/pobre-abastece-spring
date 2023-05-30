@@ -32,6 +32,8 @@ public class User implements UserDetails {
     private String phone;
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idUser")
+    public List<Avaliacao> avaliacao;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -67,7 +69,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    //  private Carro carro;
-
 
 }
