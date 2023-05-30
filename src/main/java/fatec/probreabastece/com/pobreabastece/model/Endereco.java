@@ -16,7 +16,7 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter 
+@Getter
 @Setter
 @Entity
 @Table(name="endereco")
@@ -24,8 +24,8 @@ public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_endereco")
-    private Integer id_endereco;
+    @Column(name="idEndereco")
+    private Integer idEndereco;
     private Integer cep;
     private String cidade;
     private String logradouro;
@@ -33,7 +33,8 @@ public class Endereco {
     private String complemento;
     private String bairro;
 
-    @OneToOne (mappedBy = "id_endereco")
+    @OneToOne (mappedBy = "idEndereco")
     private Posto posto;
+
 
 }

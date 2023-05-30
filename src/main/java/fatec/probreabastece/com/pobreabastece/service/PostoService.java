@@ -34,14 +34,11 @@ public class PostoService {
     public Posto save(Posto posto, Endereco endereco){
         logger.info("Endereço cadastrado");
         enderecoRepository.save(endereco);
-        Integer id_endereco = endereco.getId_endereco();
-        posto.setId_endereco(endereco);
+        Integer idEndereco = endereco.getIdEndereco();
+        posto.setIdEndereco(endereco);
         return  repository.save(posto);
     }
     public Posto listarMeuPosto(Long id){
         Optional<Posto> posto = repository.findById(id);
         return posto.orElse(null);
-    }
-
-
-}
+    }}

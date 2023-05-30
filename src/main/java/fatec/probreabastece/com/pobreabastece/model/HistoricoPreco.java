@@ -1,6 +1,7 @@
 package fatec.probreabastece.com.pobreabastece.model;
 
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -27,31 +28,21 @@ public class HistoricoPreco {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_historico;
     private String preco;
-    private String data_alterecao;
+    private Date dataAlterecao;
   
     
     @ManyToMany
     @JoinTable(name = "COMBUSTIVEL_JOIN",
      joinColumns = 
-     @JoinColumn(name = "id_combustivel")
+     @JoinColumn(name = "idCombustivel")
      , inverseJoinColumns = 
-     @JoinColumn(name = "id_combustivel1"))
-    private List<Combustivel> id_combustivel;
+     @JoinColumn(name = "idCombustivel1"))
+    private List<Combustivel> idCombustivel;
 
-    @ManyToMany
-    @JoinTable(name = "POSTO_JOIN", 
-    joinColumns = 
-    @JoinColumn(name = "id_posto"), 
-    inverseJoinColumns = 
-    @JoinColumn(name = "id_posto1"))
-    private List<Posto> id_posto;
+    @ManyToOne
+    @JoinColumn(name = "idPosto")
+    private Posto idPosto;
 
-    @ManyToMany
-    @JoinTable(name = "CONTA_JOIN", 
-    joinColumns = 
-    @JoinColumn(name = "id_conta"),
-    inverseJoinColumns = 
-    @JoinColumn(name = "id_conta1"))
-    List<Conta> id_conta;
+
 
 }

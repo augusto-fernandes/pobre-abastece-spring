@@ -19,7 +19,7 @@ public class ViaCepController {
 
     private final EnderecoServiceCEP enderecoService;
 
-    @GetMapping("/consulta")
+    @GetMapping
     public ResponseEntity consultaCep(@RequestBody EnderecoRequestVIACEP enderecoRequest) {
 
 

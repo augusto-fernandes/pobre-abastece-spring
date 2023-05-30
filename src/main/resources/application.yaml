@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+
     username: sa
     password:
+    url: jdbc:h2:file:\Users\souja\OneDrive\Área de Trabalho\FATEC\Desenvolvimento WEB\Projetos\pobre-abastece-spring\data
 
   h2:
     console:

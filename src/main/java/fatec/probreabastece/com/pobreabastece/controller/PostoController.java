@@ -30,17 +30,13 @@ public class PostoController {
     public ResponseEntity<Posto> cadastroPosto(@RequestBody PostoEndereco[] meuArray) {
         Posto posto = new Posto();
         Endereco endereco = new Endereco();
-;        for (PostoEndereco postoEndereco : meuArray) {
-           // if (postoEndereco.getTipo().equals("posto")) {
+     for (PostoEndereco postoEndereco : meuArray) {
                posto = (Posto) postoEndereco.getPosto();
                 System.out.println("dados"+posto.getCnpj());
-            //} else if (postoEndereco.getTipo().equals("endereco")) {
                 endereco = (Endereco) postoEndereco.getEndereco();
             }
-       // }
-
         Posto postoCriado = service.save(posto, endereco);
-        return ResponseEntity.status(HttpStatus.CREATED).body(posto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(postoCriado);
     }
 
     @GetMapping(value = "/{id}")
