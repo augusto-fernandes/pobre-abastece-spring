@@ -1,17 +1,16 @@
 package fatec.probreabastece.com.pobreabastece.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.util.ClassUtil;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 
 @NoArgsConstructor
@@ -20,11 +19,11 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="endereco")
-public class Endereco {
-
+public class Endereco implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idEndereco")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEndereco;
     private Integer cep;
     private String cidade;
@@ -33,7 +32,8 @@ public class Endereco {
     private String complemento;
     private String bairro;
 
-    @OneToOne (mappedBy = "idEndereco")
+    @JsonIgnore
+    @OneToOne(mappedBy = "endereco")
     private Posto posto;
 
 

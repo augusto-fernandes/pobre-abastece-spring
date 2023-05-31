@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
@@ -19,10 +20,11 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "POSTO")
-public class Posto {
+public class Posto implements Serializable {
+
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPosto;
     private String nome;
     private String cnpj;
@@ -30,15 +32,16 @@ public class Posto {
     private String horario_atendimento;
     private String servicos;
     private String pagamento;
+    private String email;
+    private String senha;
+    @OneToOne(cascade =CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
-
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "idEndereco", referencedColumnName = "idEndereco")
-    private Endereco idEndereco;
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idPosto")
     public List<HistoricoPreco> historico;
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idPosto")
     private List<Avaliacao> avaliacao;
 
