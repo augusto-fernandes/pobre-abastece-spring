@@ -9,6 +9,6 @@ import fatec.probreabastece.com.pobreabastece.model.dto.EnderecoResponseVIACEP;
 @FeignClient(url ="https://viacep.com.br/ws/", name = "viacep" )
 public interface EnderecoFeign {
 
-     @GetMapping("{cep}/json")
+     @GetMapping("/{cep}/json")
      EnderecoResponseVIACEP buscaEnderecoCep(@PathVariable("cep") String cep);
 }

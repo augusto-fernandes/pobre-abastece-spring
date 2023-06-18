@@ -25,16 +25,16 @@ public class Avaliacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idAvaliacao;
+    private long id;
     private String nota; 
     private String descricaoAvaliacao;
     
     @ManyToOne
-    @JoinColumn(name = "idPosto")
-    private Posto idPosto;
+    @JoinColumn(name = "posto_id")
+    private Posto posto;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    private User idUser;
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

@@ -1,4 +1,5 @@
 package fatec.probreabastece.com.pobreabastece.controller;
+import fatec.probreabastece.com.pobreabastece.configuration.util.MediaType;
 import fatec.probreabastece.com.pobreabastece.model.User;
 import fatec.probreabastece.com.pobreabastece.model.dto.UserRequestDTO;
 import fatec.probreabastece.com.pobreabastece.model.dto.UserResponseDTO;
@@ -20,24 +21,26 @@ public class UserController {
     @Autowired
     ModelMapper mapper;
 
-    @GetMapping
+    @GetMapping(produces ={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML})
     ResponseEntity<List<UserResponseDTO >> findAll(){
         List<UserResponseDTO> result = service.findAll();
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}" , produces = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
     public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id ){
         return ResponseEntity.ok().body((mapper.map(service.findById(id),UserResponseDTO.class)));
     }
 
-    @PostMapping
+    @PostMapping(consumes =  { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML },
+            produces = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
     public ResponseEntity<User> createUser(@RequestBody User user){
         User userCreated = service.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes =  { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML },
+            produces = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
     public ResponseEntity<UserRequestDTO> updateUser( @PathVariable(name = "id") Long id, @RequestBody UserRequestDTO user ){
         user.setId(id);
         return ResponseEntity.ok().body(mapper.map(service.update(user), UserRequestDTO.class));

@@ -1,5 +1,6 @@
 package fatec.probreabastece.com.pobreabastece.controller;
 
+import fatec.probreabastece.com.pobreabastece.configuration.util.MediaType;
 import fatec.probreabastece.com.pobreabastece.model.Endereco;
 import fatec.probreabastece.com.pobreabastece.model.Posto;
 import fatec.probreabastece.com.pobreabastece.service.PostoService;
@@ -20,30 +21,37 @@ public class PostoController {
     ModelMapper mapper;
 
 
-    @GetMapping(value = "/todos")
-    public List<Posto> todosPostos()
-    {
+    @GetMapping(produces ={MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML})
+    public List<Posto> todosPostos() {
         return  service.todosPostos();
     }
 
-    @PostMapping
-    public ResponseEntity<Posto> cadastroPosto(@RequestBody PostoEndereco[] meuArray) {
-        Posto posto = new Posto();
-        Endereco endereco = new Endereco();
-     for (PostoEndereco postoEndereco : meuArray) {
-               posto = (Posto) postoEndereco.getPosto();
-                System.out.println("dados"+posto.getCnpj());
-                endereco = (Endereco) postoEndereco.getEndereco();
-            }
-        Posto postoCriado = service.save(posto, endereco);
-        return ResponseEntity.status(HttpStatus.CREATED).body(postoCriado);
-    }
 
-    @GetMapping(value = "/{id}")
+
+    @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
     public ResponseEntity<Posto> listarPosto(@PathVariable Long id)
     {
         return ResponseEntity.ok().body(service.listarMeuPosto(id));
 
+    }
+
+    @PostMapping(consumes =  { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML },
+                 produces = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
+    public ResponseEntity<String> create(@RequestBody Posto posto){
+
+        return service.create(posto);
+    }
+
+    @DeleteMapping
+    ResponseEntity<String> deletarPosto(@RequestBody Posto posto){
+
+        return service.delete(posto);
+
+    }
+    @PutMapping(consumes =  { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML },
+            produces = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML, MediaType.APPLICATION_YAML })
+    ResponseEntity<String> update(@RequestBody Posto posto){
+        return service.update(posto);
     }
 
 }

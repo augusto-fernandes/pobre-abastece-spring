@@ -30,17 +30,20 @@ public class Posto {
     private String horario_atendimento;
     private String servicos;
     private String pagamento;
+    private String email;
+    private String senha;
 
 
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "idEndereco", referencedColumnName = "idEndereco")
-    private Endereco idEndereco;
+    @OneToOne(cascade =CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
-    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idPosto")
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "posto")
     public List<HistoricoPreco> historico;
 
-    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "idPosto")
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "posto")
     private List<Avaliacao> avaliacao;
+
 
     @Override
     public boolean equals(Object o) {

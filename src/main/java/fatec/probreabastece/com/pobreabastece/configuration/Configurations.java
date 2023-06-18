@@ -26,21 +26,26 @@ public class Configurations {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "/home").permitAll()
                 .requestMatchers(HttpMethod.GET, "/users").permitAll()
+                .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                .requestMatchers(HttpMethod.GET, "/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/consulta").permitAll()
+                .requestMatchers(HttpMethod.POST, "/consulta").permitAll()
+                .requestMatchers(HttpMethod.GET, "/endereco").permitAll()
+                .requestMatchers(HttpMethod.POST, "/endereco").permitAll()
+                .requestMatchers(HttpMethod.GET, "/viacep/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/users/**").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/users/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/postos").permitAll()
-                .requestMatchers(HttpMethod.GET, "/consulta").permitAll()
-                .requestMatchers(HttpMethod.POST, "/cadastro").permitAll()
-                .requestMatchers(HttpMethod.POST, "/postos").permitAll()
-                .requestMatchers(HttpMethod.GET, "/postos").permitAll()
+
                 .requestMatchers(HttpMethod.DELETE, "/postos").permitAll()
+                .requestMatchers(HttpMethod.POST, "/postos/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/postos/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/endereco").permitAll()
 
 
-                .requestMatchers("/h2/**").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated().and().build();
 
 

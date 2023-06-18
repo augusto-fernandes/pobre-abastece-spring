@@ -26,22 +26,20 @@ public class HistoricoPreco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_historico;
+    private long id;
     private String preco;
     private Date dataAlterecao;
   
     
-    @ManyToMany
-    @JoinTable(name = "COMBUSTIVEL_JOIN",
-     joinColumns = 
-     @JoinColumn(name = "idCombustivel")
-     , inverseJoinColumns = 
-     @JoinColumn(name = "idCombustivel1"))
-    private List<Combustivel> idCombustivel;
+//    @ManyToMany
+//    @JoinTable(name = "COMBUSTIVEL_JOIN", joinColumns =
+//     @JoinColumn(name = "idCombustivel"), inverseJoinColumns =
+//     @JoinColumn(name = "idCombustivel1"))
+//    private List<Combustivel> combustivel;
 
     @ManyToOne
-    @JoinColumn(name = "idPosto")
-    private Posto idPosto;
+    @JoinColumn(name = "posto")
+    private Posto posto;
 
 
 
